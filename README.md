@@ -2,6 +2,9 @@
 HuC6280(PC Engine / TurboGrafx-16) VGM 파일을  
 Konami SCC-I(K051649) + MSX PSG(AY‑3‑8910)을 사용하는 VGM 파일로 변환하는 앱 프로젝트 
 
+---- What is "MSX_PCE2MSX_VGM_CONVERTER"  
+https://youtu.be/OHTTWZLqZQM?si=htLMSQyLQPws04d0  
+
 이 변환된 파일은 이미 두 칩을 모두 지원하는(Darky와 같은 콤보 카트리지 포함) [vgmplay-msx](https://hg.sr.ht/~grauw/vgmplay-msx)를 통해   
 실제 MSX 하드웨어(또는 소프트웨어 플레이어)에서 재생할 수 있습니다.    
 MSX를 위한 실기 또는 에뮬레이터가 아닌 일반적 범용 플레이어등에서는 제대로 플레이되지 않을 수 있습니다. 
