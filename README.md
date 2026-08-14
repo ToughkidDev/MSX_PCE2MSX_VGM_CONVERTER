@@ -43,8 +43,8 @@ huc6280_msx_converter.exe <inputs...> <output_dir>       여러 입력을 output
                                                          (하위 폴더 구조 그대로 유지)
 ```
 
-`.vgz`(gzip 압축 VGM)는 입력/출력 모두 지원됩니다. 입력 VGM은 **HuC6280 레지스터
-쓰기와 지연/종료 커맨드만 있는, HuC6280 단독 칩 리핑**이어야 합니다(PC Engine vgm 리핑은
+`.vgz`(gzip 압축 VGM)는 입력/출력 모두 지원됩니다.   
+입력 VGM은 **HuC6280 레지스터 쓰기와 지연/종료 커맨드만 있는, HuC6280 단독 칩 리핑**이어야 합니다 (PC Engine vgm 리핑은
 보통 이 형태입니다).
 
 
