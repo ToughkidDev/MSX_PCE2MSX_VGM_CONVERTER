@@ -17,7 +17,8 @@ Windows 10, 11 - 터미널 모드에서 실행하세요
 
 ## 지원하는 사운드 카트리지 
 
-기본 연주 - Konami SCC-I (SCC+) 5채널, MSX-PSG 1채널 
+기본 연주 - Konami SCC-I (SCC+) 5채널, MSX-PSG 1채널   
+
 DDA(PCM출력)을 위해 NEOTRON(YM2610/b), Makoto(YM2608), MSX-AUDIO(Y8950)
 
 ## 사용법
