@@ -14,6 +14,12 @@ MSX를 위한 실기 또는 에뮬레이터가 아닌 일반적 범용 플레이
 Windows 10, 11 - 터미널 모드에서 실행하세요   
 이미 알려진 바와 같이 MSX측의 메모리는 vgmplay가 플레이할 vgm파일보다 큰 사이즈를 요구합니다. 
 
+
+## 지원하는 사운드 카트리지 
+
+기본 연주 - Konami SCC-I (SCC+)  
+DDA(PCM출력)을 위해 NEOTRON(YM2610/b), Makoto(YM2608), MSX-AUDIO(Y8950)
+
 ## 사용법
 
 ```
