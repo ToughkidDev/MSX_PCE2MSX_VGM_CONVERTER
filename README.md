@@ -73,4 +73,94 @@ huc6280_msx_converter.exe <inputs...> <output_dir>       여러 입력을 output
 | `--normalize` | 기본 Neotron/`--ym2608`/`--msxaudio` 타깃에서 DDA를 제외한 모든 멜로디 채널(SCC/PSG)의 볼륨을 그 파일 자신의 최대치 기준으로 평준화(파일별로 배율 자동 계산, 인자 없는 on/off 플래그). `--normalize`를 쓰면 배치 변환 출력 파일명 끝에 `_N`이 붙음. vgm파일 리핑 타입에 따라 볼륨이 들쭉날쭉한 문제를 이 옵션으로 평준화 |
 
 ---
+English - 
+# HuC6280 to SCC/PSG Converter
 
+Converts HuC6280 (PC Engine / TurboGrafx-16) music files (`.vgm`/`.vgz`) into
+VGM files that play on real MSX hardware using the SCC(-I) and PSG
+(AY-3-8910) sound chips - or in any VGM player that supports them.
+
+This document is the same information shown by running the tool with no
+arguments (`--help`), kept as a plain file so it can be read without
+running the program.
+
+## Usage
+
+```
+huc6280_msx_converter.exe <input.vgm> <output.vgm>
+```
+Convert a single file.
+
+```
+huc6280_msx_converter.exe <pattern...>
+```
+Convert several files at once (wildcards like `*.vgm` are OK).
+
+```
+huc6280_msx_converter.exe <folder>
+```
+Convert every `.vgm`/`.vgz` file in a folder, including subfolders.
+
+```
+huc6280_msx_converter.exe <inputs...> <output_folder>
+```
+Convert into a specific output folder instead of alongside the original
+files.
+
+Output files are named after the input file, with a suffix showing the
+format used (plus an extra `_N` if `--normalize` was used), so you can
+tell how a file was converted just from its name.
+
+(If you're running this from the Python source instead of the `.exe`,
+replace `huc6280_msx_converter.exe` above with `python vgm_convert.py`.)
+
+## Drum/voice sound (DDA) playback
+
+Games' drum hits and voice samples need a real ADPCM sample-playback chip
+to be heard on MSX - the rest of the music always plays fine either way.
+Pick whichever matches your hardware (default: Neotron):
+
+| Option | Hardware |
+|---|---|
+| *(none)* | Neotron (YM2610B) - the default |
+| `--ym2608` | Makoto (YM2608) instead |
+| `--msxaudio` | MSX-AUDIO (Y8950) instead - built into some MSX turbo-R/FS-A1 models, or available as an add-on cartridge |
+
+Don't have any of these? No need to pick anything - drums/voice will just
+be silent, and the rest of the music is unaffected.
+
+## Other options
+
+- **`--scc-vol N`** - Adjust SCC volume up (positive) or down (negative).
+  Default: `0`.
+- **`--psg-vol N`** - Adjust PSG volume the same way. Default: `-3` (PSG
+  otherwise tends to sound a bit louder than SCC).
+- **`--adpcmb-vol N`** - Adjust drum/voice sample volume (0-255). Leave
+  this alone unless drums/voice sound too loud or too quiet.
+- **`--psg-channel N`** - Choose which of the 6 source channels (0-5)
+  plays through the PSG chip yourself, instead of letting the converter
+  choose automatically. Only useful for fine-tuning a specific song that
+  doesn't sound right - the automatic choice is correct for the large
+  majority of songs.
+- **`--normalize`** - Automatically raise the overall volume for songs
+  that come out quieter than usual. Off by default.
+
+## Examples
+
+```
+huc6280_msx_converter.exe song.vgm song_out.vgm
+huc6280_msx_converter.exe *.vgm *.vgz
+huc6280_msx_converter.exe "Gradius (TG-16)"
+huc6280_msx_converter.exe --ym2608 song.vgm song_out.vgm
+huc6280_msx_converter.exe --msxaudio --normalize song.vgm song_out.vgm
+huc6280_msx_converter.exe vgm_collection/ converted/
+```
+
+## Notes
+
+- `.vgz` (gzip-compressed VGM) files are supported for both input and
+  output.
+- This tool only converts HuC6280 (PC Engine/TurboGrafx-16) music rips.
+- A couple of uncommon effects aren't reproduced: one rarely-used
+  frequency-modulation feature, and true stereo (SCC and PSG mix down to
+  mono).
